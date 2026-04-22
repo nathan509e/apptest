@@ -70,7 +70,8 @@ export default function Dashboard({ onScoreSelect }) {
 
   const handleSavedScoreClick = async (fileName) => {
     try {
-      const response = await fetch(`/scores/${fileName}`);
+      const response = await fetch(`${import.meta.env.BASE_URL}scores/${fileName}`);
+      if (!response.ok) throw new Error("File not found");
       const text = await response.text();
       const file = new File([text], fileName, { type: 'application/xml' });
       onScoreSelect(file);

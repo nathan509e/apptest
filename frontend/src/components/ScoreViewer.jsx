@@ -82,10 +82,23 @@ export default function ScoreViewer({ scoreFile, onBack }) {
 
     const loadAndRender = async () => {
       try {
+        try {
+          if (audioPlayerRef.current) {
+            await audioPlayerRef.current.stop();
+          }
+        } catch (e) {
+          console.warn("Could not stop audio player before loading", e);
+        }
+        
         await osmdRef.current.load(currentXml);
         osmdRef.current.render();
         osmdRef.current.cursor.show();
-        await audioPlayerRef.current.loadScore(osmdRef.current);
+        
+        try {
+          await audioPlayerRef.current.loadScore(osmdRef.current);
+        } catch (e) {
+          console.warn("Could not load score into audio player", e);
+        }
       } catch (err) {
         console.error("OSMD Load Error: ", err);
       }
@@ -208,9 +221,6 @@ export default function ScoreViewer({ scoreFile, onBack }) {
             <label htmlFor="show-notes-cb">NOTAS</label>
           </div>
           <div className="toolbar-separator-small" />
-          <button className="toolbar-btn playback-btn" onClick={stopAudio} disabled={audioState === 'STOPPED'}>
-            <Square size={16} fill={audioState !== 'STOPPED' ? "currentColor" : "none"} />
-          </button>
           <button className="toolbar-btn primary playback-btn play-pause-btn" onClick={togglePlay}>
             {isPlaying ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" />}
           </button>
