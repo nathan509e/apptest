@@ -1,3 +1,4 @@
+@ -1,145 +0,0 @@
 # ScoreFlow Studio
 
 Aplicativo web moderno para leitura, conversao, visualizacao, transposicao e exportacao de partituras a partir de arquivos PDF.
