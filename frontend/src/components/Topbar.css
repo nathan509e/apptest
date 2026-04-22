@@ -1,0 +1,45 @@
+.topbar {
+  height: var(--topbar-height);
+  background-color: var(--bg-topbar);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  -webkit-app-region: drag; /* Mocking desktop app feel */
+}
+
+.topbar-nav {
+  display: flex;
+  gap: 24px;
+  height: 100%;
+}
+
+.topbar-item {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  height: 100%;
+  position: relative;
+  -webkit-app-region: no-drag;
+}
+
+.topbar-item:hover {
+  color: var(--text-primary);
+}
+
+.topbar-item.active {
+  color: var(--text-primary);
+}
+
+.topbar-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+}

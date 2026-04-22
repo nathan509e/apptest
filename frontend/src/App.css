@@ -1,0 +1,6 @@
+.main-area {
+  flex: 1;
+  background-color: var(--bg-app);
+  overflow-y: auto;
+  position: relative;
+}

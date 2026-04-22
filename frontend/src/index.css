@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg-app: #252528;
+  --bg-sidebar: #1c1c1f;
+  --bg-topbar: #252528;
+  --bg-card: #313135;
+  --bg-card-hover: #3a3a3f;
+  
+  --text-primary: #f3f3f4;
+  --text-secondary: #9ca3af;
+  
+  --accent-color: #5b9bf8;
+  --border-color: #3f3f46;
+  
+  --sidebar-width: 240px;
+  --topbar-height: 48px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.main-content-wrapper {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
