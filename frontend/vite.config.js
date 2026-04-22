@@ -54,5 +54,6 @@ const scoreStoragePlugin = () => ({
 })
 
 export default defineConfig({
+  base: '/apptest/',
   plugins: [react(), scoreStoragePlugin()],
 })
